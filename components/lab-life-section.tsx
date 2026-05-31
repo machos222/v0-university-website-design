@@ -1,83 +1,69 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, BookOpen, FileText, PartyPopper } from "lucide-react"
 import { Card, CardContent } from "@/components/ui/card"
-
-const activities = [
-  {
-    icon: BookOpen,
-    title: "論文ゼミ",
-    schedule: "毎週水曜日",
-    description: "最新の論文を輪読し、研究動向を把握します",
-  },
-  {
-    icon: FileText,
-    title: "週報発表",
-    schedule: "毎週金曜日",
-    description: "進捗を共有し、ディスカッションを行います",
-  },
-  {
-    icon: PartyPopper,
-    title: "イベント",
-    schedule: "年間を通じて",
-    description: "歓迎会、忘年会、卒業祝いなど",
-  },
-]
+import { useLanguage } from "@/lib/i18n"
 
 const photos = [
-  {
-    src: "/images/lab-life-1.jpg",
-    alt: "論文ゼミの様子",
-    caption: "論文ゼミ",
-  },
-  {
-    src: "/images/lab-life-2.jpg",
-    alt: "実験の様子",
-    caption: "実験風景",
-  },
-  {
-    src: "/images/lab-life-3.jpg",
-    alt: "研究室のミーティング",
-    caption: "ディスカッション",
-  },
-  {
-    src: "/images/lab-life-4.jpg",
-    alt: "歓迎会の様子",
-    caption: "歓迎会",
-  },
-  {
-    src: "/images/lab-life-5.jpg",
-    alt: "学会発表",
-    caption: "学会発表",
-  },
-  {
-    src: "/images/lab-life-6.jpg",
-    alt: "忘年会の様子",
-    caption: "忘年会",
-  },
+  { src: "/images/lab-life-1.jpg", alt: "論文ゼミの様子", captionJa: "論文ゼミ", captionEn: "Journal Club" },
+  { src: "/images/lab-life-2.jpg", alt: "実験の様子", captionJa: "実験風景", captionEn: "Experiments" },
+  { src: "/images/lab-life-3.jpg", alt: "研究室のミーティング", captionJa: "ディスカッション", captionEn: "Discussion" },
+  { src: "/images/lab-life-4.jpg", alt: "歓迎会の様子", captionJa: "歓迎会", captionEn: "Welcome Party" },
+  { src: "/images/lab-life-5.jpg", alt: "学会発表", captionJa: "学会発表", captionEn: "Conference" },
+  { src: "/images/lab-life-6.jpg", alt: "忘年会の様子", captionJa: "忘年会", captionEn: "Year-end Party" },
 ]
 
 export function LabLifeSection() {
+  const { locale, t } = useLanguage()
+
+  const activities = [
+    {
+      icon: BookOpen,
+      title: t.labLife.events.seminar.title,
+      schedule: t.labLife.events.seminar.day,
+      description: t.labLife.events.seminar.description,
+    },
+    {
+      icon: FileText,
+      title: t.labLife.events.report.title,
+      schedule: t.labLife.events.report.day,
+      description: t.labLife.events.report.description,
+    },
+    {
+      icon: PartyPopper,
+      title: locale === "ja" ? "イベント" : "Events",
+      schedule: locale === "ja" ? "年間を通じて" : "Throughout the year",
+      description: locale === "ja" 
+        ? "歓迎会、忘年会、卒業祝いなど"
+        : "Welcome party, year-end party, graduation celebration",
+    },
+  ]
+
   return (
     <section className="py-20 lg:py-28 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
           <div>
             <p className="text-sm text-primary font-medium tracking-wider uppercase mb-2">
-              Lab Life
+              {t.labLife.subtitle}
             </p>
             <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-              研究室生活
+              {t.labLife.title}
             </h2>
             <p className="text-muted-foreground max-w-xl">
-              研究だけでなく、メンバー同士の交流も大切にしています
+              {locale === "ja" 
+                ? "研究だけでなく、メンバー同士の交流も大切にしています"
+                : "We value not only research but also interaction among members"
+              }
             </p>
           </div>
           <Link
             href="/lab-life"
             className="inline-flex items-center text-sm text-primary hover:text-primary/80 transition-colors"
           >
-            詳しく見る
+            {locale === "ja" ? "詳しく見る" : "Learn more"}
             <ArrowRight className="ml-1 h-4 w-4" />
           </Link>
         </div>
@@ -117,12 +103,14 @@ export function LabLifeSection() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                <p className="text-sm font-medium text-white">{photo.caption}</p>
+                <p className="text-sm font-medium text-white">
+                  {locale === "ja" ? photo.captionJa : photo.captionEn}
+                </p>
               </div>
               {/* Placeholder overlay - remove when real images are added */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                 <span className="text-sm text-foreground/60 bg-background/80 px-3 py-1 rounded-full">
-                  {photo.caption}
+                  {locale === "ja" ? photo.captionJa : photo.captionEn}
                 </span>
               </div>
             </div>

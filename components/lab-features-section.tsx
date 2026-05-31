@@ -1,37 +1,39 @@
-import { Users, Lightbulb, Award } from "lucide-react"
+"use client"
 
-const features = [
-  {
-    icon: Users,
-    title: "少人数制による手厚い指導",
-    description: "教員と学生の距離が近く、一人ひとりに合わせた丁寧な指導を行います。実験の基礎から論文執筆まで、しっかりサポートします。",
-  },
-  {
-    icon: Lightbulb,
-    title: "主体性を育む研究環境",
-    description: "自分で考え、行動する力を養います。アイデアを尊重し、挑戦を応援する風土があります。",
-  },
-  {
-    icon: Award,
-    title: "学会発表への挑戦",
-    description: "学部生・大学院生問わず、積極的に学会発表の機会を設けています。研究成果を発信する力を身につけます。",
-  },
-]
+import { Users, Lightbulb, Award } from "lucide-react"
+import { useLanguage } from "@/lib/i18n"
 
 export function LabFeaturesSection() {
+  const { t } = useLanguage()
+
+  const features = [
+    {
+      icon: Users,
+      title: t.features.feature1.title,
+      description: t.features.feature1.description,
+    },
+    {
+      icon: Lightbulb,
+      title: t.features.feature2.title,
+      description: t.features.feature2.description,
+    },
+    {
+      icon: Award,
+      title: t.features.feature3.title,
+      description: t.features.feature3.description,
+    },
+  ]
+
   return (
     <section className="py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <p className="text-sm text-primary font-medium tracking-wider uppercase mb-2">
-            Our Lab Culture
+            {t.features.subtitle}
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
-            林研究室の特徴
+            {t.features.title}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
-            私たちは、学生一人ひとりの成長を大切にしています
-          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

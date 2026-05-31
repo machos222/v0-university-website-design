@@ -1,9 +1,14 @@
+"use client"
+
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { useLanguage } from "@/lib/i18n"
 
 export function HeroSection() {
+  const { t } = useLanguage()
+
   return (
     <section className="relative min-h-[85vh] flex items-center">
       {/* Hero Background Image */}
@@ -22,30 +27,29 @@ export function HeroSection() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
         <div className="max-w-2xl">
           <p className="text-sm text-primary font-medium tracking-wider uppercase mb-4">
-            横浜市立大学 生体機能医科学研究室
+            {t.hero.subtitle}
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
-            <span className="text-balance">構造機能解析で</span>
-            <br />
-            <span className="text-primary text-balance">微小管</span>
-            <span className="text-balance">が紡ぐ</span>
-            <br />
-            <span className="text-balance">生命の仕組みを解き明かす</span>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 whitespace-pre-line text-balance">
+            {t.hero.title.split('\n').map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < t.hero.title.split('\n').length - 1 && <br />}
+              </span>
+            ))}
           </h1>
           <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
-            私たちは、クライオ電子顕微鏡を用いた構造生物学的アプローチにより、
-            微小管とモータータンパク質の分子メカニズムを研究しています。
+            {t.hero.description}
           </p>
           <div className="flex flex-wrap gap-4">
             <Button asChild size="lg">
               <Link href="/research">
-                Research
+                {t.hero.researchButton}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/for-students">
-                配属希望の方へ
+                {t.hero.contactButton}
               </Link>
             </Button>
           </div>
