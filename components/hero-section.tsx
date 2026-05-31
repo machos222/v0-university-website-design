@@ -25,19 +25,14 @@ export function HeroSection() {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
           <p className="text-sm text-primary font-medium tracking-wider uppercase mb-4">
             {t.hero.subtitle}
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 whitespace-pre-line text-balance">
-            {t.hero.title.split('\n').map((line, i) => (
-              <span key={i}>
-                {line}
-                {i < t.hero.title.split('\n').length - 1 && <br />}
-              </span>
-            ))}
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            {t.hero.title}
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
+          <p className="text-lg lg:text-xl text-muted-foreground leading-relaxed mb-8">
             {t.hero.description}
           </p>
           <div className="flex flex-wrap gap-4">

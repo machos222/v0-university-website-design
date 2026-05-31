@@ -1,5 +1,6 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { LabFeaturesSection } from "@/components/lab-features-section"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Mail, GraduationCap, FlaskConical, Users } from "lucide-react"
@@ -98,6 +99,9 @@ export default function ForStudentsPage() {
             </p>
           </div>
         </section>
+
+        {/* Lab Features Section */}
+        <LabFeaturesSection />
 
         {/* Why Join Us */}
         <section className="py-16 lg:py-24">
