@@ -1,20 +1,28 @@
 import Link from "next/link"
-import { ArrowRight, Microscope, Users, BookOpen } from "lucide-react"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[90vh] flex items-center">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
-        <MicrotubulePattern />
+    <section className="relative min-h-[85vh] flex items-center">
+      {/* Hero Background Image */}
+      <div className="absolute inset-0">
+        <Image
+          src="/images/hero-microtubule.png"
+          alt="微小管の蛍光顕微鏡画像"
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/80 to-background/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-        <div className="max-w-3xl">
+        <div className="max-w-2xl">
           <p className="text-sm text-primary font-medium tracking-wider uppercase mb-4">
-            Yokohama City University
+            横浜市立大学 生体機能医科学研究室
           </p>
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
             <span className="text-balance">構造機能解析で</span>
@@ -24,7 +32,7 @@ export function HeroSection() {
             <br />
             <span className="text-balance">生命の仕組みを解き明かす</span>
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-2xl">
+          <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl">
             私たちは、クライオ電子顕微鏡を用いた構造生物学的アプローチにより、
             微小管とモータータンパク質の分子メカニズムを研究しています。
           </p>
@@ -37,64 +45,18 @@ export function HeroSection() {
             </Button>
             <Button asChild variant="outline" size="lg">
               <Link href="/for-students">
-                Join Our Lab
+                配属希望の方へ
               </Link>
             </Button>
           </div>
         </div>
+      </div>
 
-        {/* Quick Stats */}
-        <div className="mt-16 lg:mt-24 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8 max-w-3xl">
-          <div className="flex items-start gap-4 p-6 bg-card rounded-lg border border-border">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <Microscope className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-foreground">15+</p>
-              <p className="text-sm text-muted-foreground">Years of Research</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-4 p-6 bg-card rounded-lg border border-border">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <Users className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-foreground">12</p>
-              <p className="text-sm text-muted-foreground">Lab Members</p>
-            </div>
-          </div>
-          <div className="flex items-start gap-4 p-6 bg-card rounded-lg border border-border">
-            <div className="p-2 bg-primary/10 rounded-lg">
-              <BookOpen className="h-6 w-6 text-primary" />
-            </div>
-            <div>
-              <p className="text-2xl font-bold text-foreground">50+</p>
-              <p className="text-sm text-muted-foreground">Publications</p>
-            </div>
-          </div>
-        </div>
+      {/* Scroll Indicator */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-muted-foreground">
+        <span className="text-xs tracking-wider">SCROLL</span>
+        <div className="w-px h-8 bg-gradient-to-b from-muted-foreground to-transparent" />
       </div>
     </section>
-  )
-}
-
-function MicrotubulePattern() {
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full opacity-[0.03]"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <pattern id="microtubule" width="60" height="60" patternUnits="userSpaceOnUse">
-          <circle cx="30" cy="30" r="8" fill="currentColor" className="text-primary" />
-          <circle cx="30" cy="30" r="12" stroke="currentColor" strokeWidth="1" fill="none" className="text-primary" />
-          <circle cx="0" cy="0" r="4" fill="currentColor" className="text-primary" />
-          <circle cx="60" cy="0" r="4" fill="currentColor" className="text-primary" />
-          <circle cx="0" cy="60" r="4" fill="currentColor" className="text-primary" />
-          <circle cx="60" cy="60" r="4" fill="currentColor" className="text-primary" />
-        </pattern>
-      </defs>
-      <rect width="100%" height="100%" fill="url(#microtubule)" />
-    </svg>
   )
 }
