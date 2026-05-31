@@ -26,7 +26,7 @@ export function Footer() {
             <div className="flex flex-col gap-3 text-sm text-background/70">
               <div className="flex items-start gap-2">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" />
-                <span>〒236-0027 神奈川県横浜市金沢区瀬戸22-2</span>
+                <span>〒230-0045 神奈川県横浜市鶴見区末広町1-7-29</span>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="h-4 w-4 shrink-0" />

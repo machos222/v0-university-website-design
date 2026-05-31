@@ -18,7 +18,7 @@ export default function AccessPage() {
               アクセス
             </h1>
             <p className="text-lg text-muted-foreground max-w-3xl leading-relaxed">
-              横浜市立大学 金沢八景キャンパスへのアクセス方法をご案内します。
+              横浜市立大学 鶴見キャンパスへのアクセス方法をご案内します。
             </p>
           </div>
         </section>
@@ -42,10 +42,9 @@ export default function AccessPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        〒236-0027<br />
-                        神奈川県横浜市金沢区瀬戸22-2<br />
-                        横浜市立大学 金沢八景キャンパス<br />
-                        理学研究棟 5階 501号室
+                        〒230-0045<br />
+                        神奈川県横浜市鶴見区末広町1-7-29<br />
+                        横浜市立大学 鶴見キャンパス
                       </p>
                     </CardContent>
                   </Card>
@@ -88,22 +87,28 @@ export default function AccessPage() {
                 <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-8">
                   地図
                 </h2>
-                <div className="aspect-[4/3] bg-secondary rounded-lg border border-border flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <MapPin className="h-12 w-12 text-primary mx-auto mb-4" />
-                    <p className="text-muted-foreground text-sm">
-                      横浜市立大学 金沢八景キャンパス
-                    </p>
-                    <a
-                      href="https://maps.google.com/?q=横浜市立大学+金沢八景キャンパス"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary text-sm hover:underline mt-2 inline-block"
-                    >
-                      Google マップで開く →
-                    </a>
-                  </div>
+                <div className="aspect-[4/3] bg-secondary rounded-lg border border-border overflow-hidden">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3247.2!2d139.6747!3d35.5050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f8a8a6a0a0b%3A0x8a8a8a8a8a8a8a8a!2z5qiq5rWc5biC56uL5aSn5a2mIOmxuOimi-OCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1234567890"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="横浜市立大学 鶴見キャンパス"
+                  />
                 </div>
+                <p className="mt-4 text-center">
+                  <a
+                    href="https://maps.google.com/?q=横浜市立大学+鶴見キャンパス"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary text-sm hover:underline"
+                  >
+                    Google マップで開く
+                  </a>
+                </p>
               </div>
             </div>
           </div>
@@ -127,15 +132,7 @@ export default function AccessPage() {
                 <CardContent className="space-y-4">
                   <div>
                     <p className="font-medium text-foreground mb-2">
-                      京急線「金沢八景駅」
-                    </p>
-                    <p className="text-sm text-muted-foreground">
-                      下車徒歩約5分
-                    </p>
-                  </div>
-                  <div>
-                    <p className="font-medium text-foreground mb-2">
-                      シーサイドライン「金沢八景駅」
+                      JR鶴見線「鶴見小野駅」
                     </p>
                     <p className="text-sm text-muted-foreground">
                       下車徒歩約5分
@@ -143,8 +140,7 @@ export default function AccessPage() {
                   </div>
                   <div className="pt-4 border-t border-border">
                     <p className="text-sm text-muted-foreground">
-                      <span className="font-medium">品川から</span>：約45分<br />
-                      <span className="font-medium">横浜から</span>：約25分
+                      <span className="font-medium">横浜から</span>：JR京浜東北線で鶴見駅へ、JR鶴見線に乗り換え
                     </p>
                   </div>
                 </CardContent>
@@ -161,13 +157,13 @@ export default function AccessPage() {
                 <CardContent>
                   <div>
                     <p className="font-medium text-foreground mb-2">
-                      京急バス
+                      JR「鶴見駅」または京急「京急鶴見駅」から
                     </p>
                     <p className="text-sm text-muted-foreground mb-4">
-                      「横浜市大前」下車すぐ
+                      バス利用可能
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      JR新杉田駅、京急金沢八景駅からバスが運行しています。
+                      鶴見駅東口よりバスが運行しています。
                     </p>
                   </div>
                 </CardContent>
