@@ -1,13 +1,14 @@
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { MapPin, Phone, Mail, Train, Bus, Car } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { MapPin, Phone, Mail, Train, Bus, Car, ExternalLink } from "lucide-react"
 
 export default function AccessPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-16 lg:pt-20">
         {/* Page Header */}
         <section className="bg-secondary/30 py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,7 +24,7 @@ export default function AccessPage() {
           </div>
         </section>
 
-        {/* Contact Info */}
+        {/* Contact Info & Map */}
         <section className="py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -33,7 +34,7 @@ export default function AccessPage() {
                   連絡先
                 </h2>
                 <div className="space-y-6">
-                  <Card className="bg-card">
+                  <Card className="bg-card hover:shadow-md transition-shadow">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg flex items-center gap-2">
                         <MapPin className="h-5 w-5 text-primary" />
@@ -49,7 +50,21 @@ export default function AccessPage() {
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card">
+                  <Card className="bg-card hover:shadow-md transition-shadow">
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-lg flex items-center gap-2">
+                        <Train className="h-5 w-5 text-primary" />
+                        最寄駅
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-muted-foreground">
+                        JR鶴見線「鶴見小野駅」より徒歩約5分
+                      </p>
+                    </CardContent>
+                  </Card>
+
+                  <Card className="bg-card hover:shadow-md transition-shadow">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg flex items-center gap-2">
                         <Phone className="h-5 w-5 text-primary" />
@@ -58,12 +73,12 @@ export default function AccessPage() {
                     </CardHeader>
                     <CardContent>
                       <p className="text-muted-foreground">
-                        045-787-XXXX（内線：XXXX）
+                        045-508-XXXX
                       </p>
                     </CardContent>
                   </Card>
 
-                  <Card className="bg-card">
+                  <Card className="bg-card hover:shadow-md transition-shadow">
                     <CardHeader className="pb-3">
                       <CardTitle className="text-lg flex items-center gap-2">
                         <Mail className="h-5 w-5 text-primary" />
@@ -72,24 +87,24 @@ export default function AccessPage() {
                     </CardHeader>
                     <CardContent>
                       <a
-                        href="mailto:contact@example.ac.jp"
-                        className="text-primary hover:text-primary/80 transition-colors"
+                        href="mailto:hayashi@yokohama-cu.ac.jp"
+                        className="text-primary hover:text-primary/80 transition-colors hover:underline"
                       >
-                        contact@example.ac.jp
+                        hayashi@yokohama-cu.ac.jp
                       </a>
                     </CardContent>
                   </Card>
                 </div>
               </div>
 
-              {/* Map Placeholder */}
+              {/* Map */}
               <div>
                 <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-8">
                   地図
                 </h2>
-                <div className="aspect-[4/3] bg-secondary rounded-lg border border-border overflow-hidden">
+                <div className="aspect-[4/3] bg-secondary rounded-lg border border-border overflow-hidden shadow-sm">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3247.2!2d139.6747!3d35.5050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f8a8a6a0a0b%3A0x8a8a8a8a8a8a8a8a!2z5qiq5rWc5biC56uL5aSn5a2mIOmxuOimi-OCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1234567890"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3247.507!2d139.6825!3d35.5027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60185f0e64bce29f%3A0x9f3dbff4df9c1f19!2z5qiq5rWc5biC56uL5aSn5a2mIOmxuOimi-OCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
@@ -99,16 +114,18 @@ export default function AccessPage() {
                     title="横浜市立大学 鶴見キャンパス"
                   />
                 </div>
-                <p className="mt-4 text-center">
-                  <a
-                    href="https://maps.google.com/?q=横浜市立大学+鶴見キャンパス"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary text-sm hover:underline"
-                  >
-                    Google マップで開く
-                  </a>
-                </p>
+                <div className="mt-4 flex justify-center">
+                  <Button asChild variant="outline" className="gap-2 hover:bg-primary hover:text-primary-foreground transition-colors">
+                    <a
+                      href="https://www.google.com/maps/place/%E6%A8%AA%E6%B5%9C%E5%B8%82%E7%AB%8B%E5%A4%A7%E5%AD%A6+%E9%B6%B4%E8%A6%8B%E3%82%AD%E3%83%A3%E3%83%B3%E3%83%91%E3%82%B9/@35.5027,139.6825,17z"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ExternalLink className="h-4 w-4" />
+                      Google マップで開く
+                    </a>
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -122,7 +139,7 @@ export default function AccessPage() {
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {/* Train */}
-              <Card className="bg-card">
+              <Card className="bg-card hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Train className="h-5 w-5 text-primary" />
@@ -147,7 +164,7 @@ export default function AccessPage() {
               </Card>
 
               {/* Bus */}
-              <Card className="bg-card">
+              <Card className="bg-card hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Bus className="h-5 w-5 text-primary" />
@@ -160,17 +177,17 @@ export default function AccessPage() {
                       JR「鶴見駅」または京急「京急鶴見駅」から
                     </p>
                     <p className="text-sm text-muted-foreground mb-4">
-                      バス利用可能
+                      鶴見駅東口よりバス利用可能
                     </p>
                     <p className="text-sm text-muted-foreground">
-                      鶴見駅東口よりバスが運行しています。
+                      臨港バス「理研・市大大学院行き」乗車、終点下車すぐ
                     </p>
                   </div>
                 </CardContent>
               </Card>
 
               {/* Car */}
-              <Card className="bg-card">
+              <Card className="bg-card hover:shadow-lg transition-shadow">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-2">
                     <Car className="h-5 w-5 text-primary" />
@@ -179,11 +196,10 @@ export default function AccessPage() {
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground mb-4">
-                    首都高速湾岸線「幸浦」出口より約10分
+                    首都高速横羽線「生麦」出口より約10分
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    ※ キャンパス内の駐車場は限りがございます。
-                    事前にご連絡ください。
+                    ※ キャンパス内の駐車場は限りがございます。事前にご連絡ください。
                   </p>
                 </CardContent>
               </Card>
@@ -197,7 +213,7 @@ export default function AccessPage() {
             <h2 className="text-2xl lg:text-3xl font-bold text-foreground mb-8">
               キャンパス内案内
             </h2>
-            <div className="p-8 bg-card rounded-lg border border-border">
+            <div className="p-8 bg-card rounded-lg border border-border hover:shadow-md transition-shadow">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="font-semibold text-foreground mb-4">
@@ -210,15 +226,15 @@ export default function AccessPage() {
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
-                      右手に見える理学研究棟に入ります
+                      右手に見える研究棟に入ります
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
-                      エレベーターで5階へ
+                      エレベーターで該当階へ
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0" />
-                      501号室が当研究室です
+                      研究室は廊下奥にあります
                     </li>
                   </ul>
                 </div>

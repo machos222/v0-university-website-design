@@ -1,7 +1,8 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { usePathname } from "next/navigation"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { useLanguage } from "@/lib/i18n"
@@ -18,16 +19,39 @@ const navKeys = [
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const pathname = usePathname()
   const { locale, setLocale, t } = useLanguage()
 
+  // Scroll detection for shadow effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Check if current path matches nav item
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
+
   return (
-    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border transition-shadow duration-300 ${
+        isScrolled ? "shadow-md" : ""
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex flex-col">
-            <span className="text-xs text-muted-foreground">{t.header.university}</span>
-            <span className="text-sm lg:text-base font-medium text-foreground">
+          <Link href="/" className="flex flex-col group">
+            <span className="text-xs text-muted-foreground group-hover:text-primary transition-colors">
+              {t.header.university}
+            </span>
+            <span className="text-sm lg:text-base font-medium text-foreground group-hover:text-primary transition-colors">
               {t.header.labName}
             </span>
           </Link>
@@ -38,9 +62,21 @@ export function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className="px-3 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                className={`relative px-3 py-2 text-sm transition-colors group ${
+                  isActive(item.href)
+                    ? "text-primary font-medium"
+                    : "text-muted-foreground hover:text-primary"
+                }`}
               >
                 {t.nav[item.key]}
+                {/* Underline animation */}
+                <span 
+                  className={`absolute bottom-0 left-3 right-3 h-0.5 bg-primary transform origin-left transition-transform duration-300 ${
+                    isActive(item.href) 
+                      ? "scale-x-100" 
+                      : "scale-x-0 group-hover:scale-x-100"
+                  }`}
+                />
               </Link>
             ))}
             
@@ -48,10 +84,10 @@ export function Header() {
             <div className="ml-4 pl-4 border-l border-border flex items-center">
               <button
                 onClick={() => setLocale("ja")}
-                className={`text-sm px-2 py-1 transition-colors ${
+                className={`text-sm px-2 py-1 transition-colors hover:text-primary ${
                   locale === "ja"
                     ? "text-primary font-medium"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-muted-foreground"
                 }`}
                 aria-label="日本語に切り替え"
               >
@@ -60,10 +96,10 @@ export function Header() {
               <span className="text-muted-foreground/50 mx-1">|</span>
               <button
                 onClick={() => setLocale("en")}
-                className={`text-sm px-2 py-1 transition-colors ${
+                className={`text-sm px-2 py-1 transition-colors hover:text-primary ${
                   locale === "en"
                     ? "text-primary font-medium"
-                    : "text-muted-foreground hover:text-foreground"
+                    : "text-muted-foreground"
                 }`}
                 aria-label="Switch to English"
               >
@@ -118,7 +154,11 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="px-4 py-3 text-sm text-muted-foreground hover:text-primary hover:bg-secondary rounded-md transition-colors"
+                  className={`px-4 py-3 text-sm rounded-md transition-colors ${
+                    isActive(item.href)
+                      ? "text-primary bg-primary/5 font-medium border-l-2 border-primary"
+                      : "text-muted-foreground hover:text-primary hover:bg-secondary"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {t.nav[item.key]}

@@ -98,7 +98,7 @@ export default function MembersPage() {
   return (
     <div className="min-h-screen flex flex-col">
       <Header />
-      <main className="flex-1">
+      <main className="flex-1 pt-16 lg:pt-20">
         {/* Page Header */}
         <section className="bg-secondary/30 py-16 lg:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

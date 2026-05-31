@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { Mail, MapPin } from "lucide-react"
+import { Mail, MapPin, ExternalLink } from "lucide-react"
 import { useLanguage } from "@/lib/i18n"
 
 const navKeys = [
@@ -13,6 +13,39 @@ const navKeys = [
   { href: "/for-students", key: "forStudents" },
   { href: "/access", key: "access" },
 ] as const
+
+const relatedLinks = [
+  { 
+    href: "https://www.yokohama-cu.ac.jp/", 
+    labelJa: "横浜市立大学", 
+    labelEn: "Yokohama City University" 
+  },
+  { 
+    href: "https://www.yokohama-cu.ac.jp/academics/grad/medicine/", 
+    labelJa: "生命医科学研究科", 
+    labelEn: "Graduate School of Medical Life Science" 
+  },
+  { 
+    href: "https://www.mbsj.jp/", 
+    labelJa: "日本分子生物学会", 
+    labelEn: "MBSJ" 
+  },
+  { 
+    href: "https://www.jscb.gr.jp/", 
+    labelJa: "日本細胞生物学会", 
+    labelEn: "JSCB" 
+  },
+  { 
+    href: "https://pubmed.ncbi.nlm.nih.gov/", 
+    labelJa: "PubMed", 
+    labelEn: "PubMed" 
+  },
+  { 
+    href: "https://researchmap.jp/", 
+    labelJa: "researchmap", 
+    labelEn: "researchmap" 
+  },
+]
 
 export function Footer() {
   const { locale, t } = useLanguage()
@@ -47,33 +80,45 @@ export function Footer() {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Navigation */}
           <div>
             <h4 className="text-sm font-medium mb-4">Navigation</h4>
             <nav className="flex flex-col gap-2">
-              {navKeys.slice(0, 4).map((item) => (
+              {navKeys.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-background/70 hover:text-background transition-colors"
+                  className="text-sm text-background/70 hover:text-background transition-colors inline-flex items-center group"
                 >
-                  {t.nav[item.key]}
+                  <span className="relative">
+                    {t.nav[item.key]}
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-background/70 transition-all duration-300 group-hover:w-full" />
+                  </span>
                 </Link>
               ))}
             </nav>
           </div>
 
+          {/* Related Links */}
           <div>
-            <h4 className="text-sm font-medium mb-4">&nbsp;</h4>
+            <h4 className="text-sm font-medium mb-4">
+              {locale === "ja" ? "関連リンク" : "Related Links"}
+            </h4>
             <nav className="flex flex-col gap-2">
-              {navKeys.slice(4).map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className="text-sm text-background/70 hover:text-background transition-colors"
+              {relatedLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-background/70 hover:text-background transition-colors inline-flex items-center gap-1 group"
                 >
-                  {t.nav[item.key]}
-                </Link>
+                  <span className="relative">
+                    {locale === "ja" ? link.labelJa : link.labelEn}
+                    <span className="absolute bottom-0 left-0 w-0 h-px bg-background/70 transition-all duration-300 group-hover:w-full" />
+                  </span>
+                  <ExternalLink className="h-3 w-3 opacity-50 group-hover:opacity-100 transition-opacity" />
+                </a>
               ))}
             </nav>
           </div>

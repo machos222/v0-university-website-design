@@ -10,7 +10,7 @@ export function HeroSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative min-h-[85vh] flex items-center">
+    <section className="relative min-h-[85vh] flex items-center pt-16 lg:pt-20">
       {/* Hero Background Image */}
       <div className="absolute inset-0">
         <Image
