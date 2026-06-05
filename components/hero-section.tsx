@@ -10,7 +10,7 @@ export function HeroSection() {
   const { t } = useLanguage()
 
   return (
-    <section className="relative min-h-[85vh] flex items-center pt-16 lg:pt-20">
+    <section className="relative min-h-[80vh] flex items-center pt-16 lg:pt-20">
       {/* Hero Background Image */}
       <div className="absolute inset-0">
         <Image
@@ -24,7 +24,7 @@ export function HeroSection() {
         <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
         <div className="max-w-3xl">
           <p className="text-sm text-primary font-medium tracking-wider uppercase mb-4">
             {t.hero.subtitle}

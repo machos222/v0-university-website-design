@@ -42,14 +42,14 @@ export function LabLifeSection() {
   ]
 
   return (
-    <section className="py-20 lg:py-28 bg-secondary/30">
+    <section className="py-14 lg:py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12">
+        <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 mb-8">
           <div>
             <p className="text-sm text-primary font-medium tracking-wider uppercase mb-2">
               {t.labLife.subtitle}
             </p>
-            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-4">
+            <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-3">
               {t.labLife.title}
             </h2>
             <p className="text-muted-foreground max-w-xl">
@@ -69,17 +69,17 @@ export function LabLifeSection() {
         </div>
 
         {/* Weekly Activities */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-10">
           {activities.map((activity, index) => (
             <Card key={index} className="bg-card">
-              <CardContent className="p-6">
+              <CardContent className="p-5">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
-                    <activity.icon className="h-6 w-6 text-primary" />
+                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                    <activity.icon className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <h3 className="font-bold text-foreground mb-1">{activity.title}</h3>
-                    <p className="text-sm text-primary font-medium mb-2">{activity.schedule}</p>
+                    <p className="text-sm text-primary font-medium mb-1">{activity.schedule}</p>
                     <p className="text-sm text-muted-foreground">{activity.description}</p>
                   </div>
                 </div>
@@ -89,7 +89,7 @@ export function LabLifeSection() {
         </div>
 
         {/* Photo Gallery */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
           {photos.map((photo, index) => (
             <div
               key={index}
@@ -102,7 +102,7 @@ export function LabLifeSection() {
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-              <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-0 left-0 right-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity">
                 <p className="text-sm font-medium text-white">
                   {locale === "ja" ? photo.captionJa : photo.captionEn}
                 </p>

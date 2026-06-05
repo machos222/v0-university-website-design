@@ -10,7 +10,7 @@ export function CTASection() {
   const { locale, t } = useLanguage()
 
   return (
-    <section className="py-20 lg:py-28 bg-primary text-primary-foreground relative overflow-hidden">
+    <section className="py-14 lg:py-20 bg-primary text-primary-foreground relative overflow-hidden">
       {/* Background decorative elements */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary-foreground rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
@@ -18,23 +18,23 @@ export function CTASection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-foreground/10 rounded-full text-sm mb-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-foreground/10 rounded-full text-sm mb-4">
               <GraduationCap className="h-4 w-4" />
               <span>{t.cta.subtitle}</span>
             </div>
-            <h2 className="text-3xl lg:text-4xl font-bold mb-4 text-balance">
+            <h2 className="text-3xl lg:text-4xl font-bold mb-3 text-balance">
               {locale === "ja" ? (
                 <>一緒に生命の謎を<br className="hidden sm:block" />解き明かしませんか？</>
               ) : (
                 <>Join us in unraveling<br className="hidden sm:block" />the mysteries of life</>
               )}
             </h2>
-            <p className="text-primary-foreground/80 leading-relaxed mb-6">
+            <p className="text-primary-foreground/80 leading-relaxed mb-5">
               {t.cta.description}
             </p>
-            <ul className="space-y-3 mb-8 text-primary-foreground/90">
+            <ul className="space-y-2 mb-6 text-primary-foreground/90">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 bg-primary-foreground rounded-full" />
                 {t.cta.targets.doctoral}
@@ -80,7 +80,7 @@ export function CTASection() {
                 </span>
               </div>
             </div>
-            <div className="absolute -bottom-4 -left-4 bg-card text-card-foreground p-4 rounded-xl shadow-lg">
+            <div className="absolute -bottom-4 -left-4 bg-card text-card-foreground p-3 rounded-xl shadow-lg">
               <p className="text-2xl font-bold text-primary">12</p>
               <p className="text-sm text-muted-foreground">
                 {locale === "ja" ? "在籍メンバー" : "Members"}
